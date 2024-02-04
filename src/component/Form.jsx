@@ -1,6 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Device } from "@capacitor/device";
 import { Toast } from "@capacitor/toast";
+import styled from "styled-components";
+
+const Button = styled.button`
+  background: transparent;
+  border-radius: 3px;
+  border: 1px solid #6288c4;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+`;
+const Input = styled.input`
+  height: 25px;
+  outline: none;
+  border-radius: 6px;
+  margin-left: 20px;
+  border: 1px solid #6288c4;
+  padding-left: 10px;
+`;
+const Container = styled.div`
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+`;
+const Label = styled.label`
+  display: inline-block;
+  width: 60px;
+`;
+const MainContainer = styled.div`
+  margin: 20px;
+`;
 
 const Form = () => {
   const [platform, setPlatform] = useState("");
@@ -71,36 +100,38 @@ const Form = () => {
   };
 
   return (
-    <div>
+    <MainContainer>
       <h1>This is {platform === "web" ? "Web" : "App"}</h1>
       <div>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <button type="submit">Submit</button>
-          </div>
+          <Container>
+            <div>
+              <Label htmlFor="name">Name :</Label>
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <Label htmlFor="email">Email :</Label>
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <Button type="submit">Submit</Button>
+            </div>
+          </Container>
         </form>
       </div>
-    </div>
+    </MainContainer>
   );
 };
 
