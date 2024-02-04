@@ -88,7 +88,10 @@ const Form = () => {
         duration: "short",
       });
     } else if (platform === "web" && !isOnline) {
-      return alert("You Are offline");
+      return Toast.show({
+        text: "You are offline",
+        duration: 2000,
+      });
     } else if (isOnline && platform !== "web") {
       return Toast.show({
         text: "Data submitted successfully",
@@ -97,7 +100,7 @@ const Form = () => {
     } else {
       Toast.show({
         text: `Name: ${formData.name}, Email: ${formData.email}\nData not submitted, You are offline`,
-        duration: "short",
+        duration: 2000,
       });
     }
   };
