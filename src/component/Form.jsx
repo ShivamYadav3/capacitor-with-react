@@ -83,7 +83,10 @@ const Form = () => {
       }
     }
     if (isOnline && platform === "web") {
-      return alert("data submitted successfully");
+      return Toast.show({
+        text: "Data submitted successfully",
+        duration: "short",
+      });
     } else if (platform === "web" && !isOnline) {
       return alert("You Are offline");
     } else if (isOnline && platform !== "web") {
